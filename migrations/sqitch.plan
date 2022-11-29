@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=zapatos-test
+
+01-init 2022-11-24T20:23:35Z Nicoclock <nicolas.charpin@oclock.io> # Création tables
+02-revenues 2022-11-24T20:26:14Z Nicoclock <nicolas.charpin@oclock.io> # Vue du chiffre d'affaires par commande
+03-revenuesForCustomer 2022-11-24T20:31:26Z Nicoclock <nicolas.charpin@oclock.io> # Fonction du chiffre d'affaires par client

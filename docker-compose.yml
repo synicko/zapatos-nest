@@ -1,0 +1,27 @@
+version: '0.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    env_file: .env
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DATABASE}',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGPORT:${POSTGRES_PORT}
+    networks:
+      - ormtest
+    ports:
+      - '${POSTGRES_PORT}:5432'
+
+networks:
+  ormtest:

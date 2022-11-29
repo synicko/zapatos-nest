@@ -1,0 +1,64 @@
+{
+  "name": "zapatos",
+  "version": "6.0.1",
+  "description": "Zero-Abstraction Postgres for TypeScript",
+  "homepage": "https://jawj.github.io/zapatos/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jawj/zapatos"
+  },
+  "bin": {
+    "zapatos": "dist/generate/cli.js"
+  },
+  "scripts": {
+    "lint": "eslint --ext .ts .",
+    "build": "npx tsc && npx gen-esm-wrapper db db.mjs && npx gen-esm-wrapper generate generate.mjs",
+    "version": "npm run lint && npm run build",
+    "postversion": "git push && git push --tags && npm publish",
+    "postinstall": "node -e \"console.warn('>>> \\u001b[1;33mZapatos was installed or upgraded. Please (re-)run \\u001b[1;32mnpx zapatos\\u001b[1;33m.\\u001b[0m <<<\\u000a')\""
+  },
+  "files": [
+    "dist/db",
+    "db.js",
+    "db.d.ts",
+    "db.mjs",
+    "dist/generate",
+    "generate.js",
+    "generate.d.ts",
+    "generate.mjs"
+  ],
+  "exports": {
+    "./db": {
+      "require": "./db.js",
+      "import": "./db.mjs"
+    },
+    "./generate": {
+      "require": "./generate.js",
+      "import": "./generate.mjs"
+    }
+  },
+  "keywords": [
+    "postgres",
+    "typescript",
+    "orm",
+    "sql"
+  ],
+  "author": "George MacKerron",
+  "license": "MIT",
+  "peerDependencies": {
+    "typescript": ">=4.1",
+    "pg": ">=7.18.2",
+    "@types/pg": ">=7.14.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.6.5",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "gen-esm-wrapper": "^1.1.3",
+    "pg": "^8.7.3",
+    "typescript": "^4.6.4"
+  }
+}
